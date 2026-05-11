@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Artifact 1 – Algorithm Types Visual Framework</title>
+
+<style>
+
+:root{
+--dark:#0f172a;
+--panel:#ffffff;
+--blue:#2563eb;
+--sky:#38bdf8;
+--green:#22c55e;
+--purple:#8b5cf6;
+--orange:#f59e0b;
+--red:#ef4444;
+--text:#1f2937;
+--muted:#64748b;
+--bg:#f4f6f8;
+}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+margin:0;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:60px 20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+font-size:2.4rem;
+}
+
+.subtitle{
+text-align:center;
+color:var(--muted);
+margin-bottom:40px;
+}
+
+.back{
+display:inline-block;
+margin-bottom:30px;
+text-decoration:none;
+color:var(--blue);
+font-weight:600;
+}
+
+.highlight{
+background:#eef4ff;
+padding:24px;
+border-radius:12px;
+margin:30px 0;
+border-left:5px solid var(--blue);
+}
+
+.section-title{
+margin-top:55px;
+margin-bottom:20px;
+font-size:1.7rem;
+color:#111827;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-top:25px;
+}
+
+.card{
+background:white;
+padding:22px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.card h3{
+margin-bottom:10px;
+color:var(--blue);
+}
+
+.infographic{
+background:#0f172a;
+color:#e5e7eb;
+border-radius:18px;
+padding:30px;
+margin-top:30px;
+box-shadow:0 8px 25px rgba(15,23,42,0.25);
+}
+
+.infographic h2{
+text-align:center;
+margin-bottom:8px;
+font-size:2rem;
+}
+
+.infographic-intro{
+text-align:center;
+max-width:850px;
+margin:0 auto 30px auto;
+color:#cbd5e1;
+}
+
+.legend{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:28px;
+}
+
+.badge{
+display:inline-block;
+padding:5px 9px;
+border-radius:999px;
+font-size:0.78rem;
+font-weight:700;
+margin:3px 4px 3px 0;
+color:white;
+}
+
+.supervised{
+background:var(--blue);
+}
+
+.unsupervised{
+background:var(--green);
+}
+
+.selfsupervised{
+background:var(--purple);
+}
+
+.tabular{
+background:#0284c7;
+}
+
+.vision{
+background:#dc2626;
+}
+
+.nlp{
+background:#7c3aed;
+}
+
+.genai{
+background:#ea580c;
+}
+
+.framework-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+}
+
+.domain-column{
+background:#111827;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:14px;
+padding:18px;
+}
+
+.domain-column h3{
+text-align:center;
+margin-bottom:16px;
+font-size:1.25rem;
+}
+
+.algorithm-card{
+background:#1f2937;
+border-radius:12px;
+padding:16px;
+margin-bottom:14px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.algorithm-card h4{
+margin-bottom:8px;
+color:#ffffff;
+font-size:1.05rem;
+}
+
+.algorithm-card p{
+font-size:0.92rem;
+color:#d1d5db;
+margin-bottom:8px;
+}
+
+.meta{
+font-size:0.85rem;
+color:#cbd5e1;
+}
+
+.relationship-strip{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:25px;
+}
+
+.relationship-box{
+background:#172554;
+padding:18px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.relationship-box h4{
+color:#93c5fd;
+margin-bottom:8px;
+}
+
+.table-wrap{
+overflow-x:auto;
+margin-top:25px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+th{
+background:#1e3a8a;
+color:white;
+padding:12px;
+text-align:left;
+font-size:0.92rem;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #e5e7eb;
+vertical-align:top;
+font-size:0.92rem;
+}
+
+tr:last-child td{
+border-bottom:none;
+}
+
+.references li{
+margin-bottom:10px;
+}
+
+.note{
+font-size:0.92rem;
+color:var(--muted);
+margin-top:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+<h1>Algorithm Types Visual Framework</h1>
+<p class="subtitle">Artifact 1 – AIML-501 Model Development</p>
+
+<!-- ARTIFACT OVERVIEW -->
+
+<h2 class="section-title">Artifact Overview</h2>
+
+<div class="highlight">
+
+<p><strong>Title:</strong> Algorithm Types Visual Framework</p>
+
+<p><strong>Introduction:</strong>
+Algorithms form the foundation of machine learning systems. They determine how models learn from data, identify patterns, make predictions, group similar cases, and generate new content. This artifact presents a visual framework for understanding major algorithm families across tabular data, computer vision, natural language processing, and generative AI.</p>
+
+<p><strong>Description:</strong>
+This portfolio artifact is an infographic-style reference that classifies ten machine learning algorithms by learning type, application domain, example use case, and core operating logic. It is designed to help learners and professionals quickly understand how different algorithms relate to each other and where they are commonly applied.</p>
+
+<p><strong>Objective:</strong>
+To clearly identify and categorize key machine learning algorithms, explain their primary application domains, and communicate their practical significance in real-world AI and analytics settings.</p>
+
+<p><strong>Process:</strong>
+I selected a balanced group of algorithms across supervised learning, unsupervised learning, computer vision, NLP, and generative AI. I then organized them into a visual framework that groups algorithms by application domain while also showing their learning style and use cases.</p>
+
+<p><strong>Tools and Technologies Used:</strong>
+HTML, CSS, GitHub Pages, course readings, educational videos, academic references, and generative AI assistance for organization and language refinement.</p>
+
+<p><strong>Value Proposition:</strong>
+This artifact demonstrates my ability to synthesize complex AI/ML concepts into a clear professional resource that can support learning, technical communication, and applied model selection.</p>
+
+<p><strong>Unique Value:</strong>
+My framework connects algorithm concepts to practical business and analytics contexts, including fraud detection, customer segmentation, image recognition, language modeling, and generative content creation.</p>
+
+<p><strong>Relevance:</strong>
+Understanding algorithm types is essential for selecting the right modeling approach for a problem. This is especially relevant in financial services, risk analytics, and responsible AI, where model choice affects performance, interpretability, fairness, and operational impact.</p>
+
+</div>
+
+<!-- VISUAL FRAMEWORK -->
+
+<div class="infographic">
+
+<h2>Machine Learning Algorithm Map</h2>
+
+<p class="infographic-intro">
+This framework classifies ten common algorithms across four major application domains: tabular data, computer vision, natural language processing, and generative AI. Each card shows the learning type, common domain, practical use case, and a brief explanation of how the algorithm works.
+</p>
+
+<div class="legend">
+<span class="badge supervised">Supervised</span>
+<span class="badge unsupervised">Unsupervised</span>
+<span class="badge selfsupervised">Self-Supervised / Generative</span>
+<span class="badge tabular">Tabular Data</span>
+<span class="badge vision">Computer Vision</span>
+<span class="badge nlp">NLP</span>
+<span class="badge genai">Generative AI</span>
+</div>
+
+<div class="framework-grid">
+
+<!-- TABULAR DATA -->
+
+<div class="domain-column">
+<h3>Tabular Data</h3>
+
+<div class="algorithm-card">
+<h4>Decision Tree</h4>
+<span class="badge supervised">Supervised</span>
+<span class="badge tabular">Tabular</span>
+<p><strong>Use Case:</strong> Loan approval, fraud rules, customer churn classification.</p>
+<p><strong>How It Works:</strong> Splits data into branches using yes/no questions until it reaches a prediction.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>Random Forest</h4>
+<span class="badge supervised">Supervised</span>
+<span class="badge tabular">Tabular</span>
+<p><strong>Use Case:</strong> Fraud detection, credit risk scoring, account abuse detection.</p>
+<p><strong>How It Works:</strong> Builds many decision trees and combines their outputs to improve stability and reduce overfitting.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>Gradient Boosting</h4>
+<span class="badge supervised">Supervised</span>
+<span class="badge tabular">Tabular</span>
+<p><strong>Use Case:</strong> Risk prediction, transaction scoring, marketing response modeling.</p>
+<p><strong>How It Works:</strong> Builds models sequentially, with each new model correcting errors from prior models.</p>
+</div>
+
+</div>
+
+<!-- UNSUPERVISED -->
+
+<div class="domain-column">
+<h3>Pattern Discovery</h3>
+
+<div class="algorithm-card">
+<h4>K-Means Clustering</h4>
+<span class="badge unsupervised">Unsupervised</span>
+<span class="badge tabular">Tabular</span>
+<p><strong>Use Case:</strong> Customer segmentation, behavioral grouping, anomaly exploration.</p>
+<p><strong>How It Works:</strong> Groups observations into K clusters based on similarity and distance from cluster centers.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>Principal Component Analysis</h4>
+<span class="badge unsupervised">Unsupervised</span>
+<span class="badge tabular">Tabular</span>
+<span class="badge vision">Vision</span>
+<p><strong>Use Case:</strong> Dimensionality reduction, feature compression, exploratory analysis.</p>
+<p><strong>How It Works:</strong> Transforms many correlated variables into fewer components that preserve the most variation.</p>
+</div>
+
+</div>
+
+<!-- COMPUTER VISION -->
+
+<div class="domain-column">
+<h3>Computer Vision</h3>
+
+<div class="algorithm-card">
+<h4>Convolutional Neural Network</h4>
+<span class="badge supervised">Supervised</span>
+<span class="badge vision">Vision</span>
+<p><strong>Use Case:</strong> Image classification, object detection, medical image analysis.</p>
+<p><strong>How It Works:</strong> Uses convolutional filters to detect visual patterns such as edges, shapes, and objects.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>Generative Adversarial Network</h4>
+<span class="badge selfsupervised">Generative</span>
+<span class="badge vision">Vision</span>
+<span class="badge genai">GenAI</span>
+<p><strong>Use Case:</strong> Synthetic image generation, image enhancement, creative media.</p>
+<p><strong>How It Works:</strong> Trains two networks against each other: a generator creates outputs and a discriminator evaluates whether they look real.</p>
+</div>
+
+</div>
+
+<!-- NLP AND GENERATIVE AI -->
+
+<div class="domain-column">
+<h3>NLP and Generative AI</h3>
+
+<div class="algorithm-card">
+<h4>BERT</h4>
+<span class="badge selfsupervised">Self-Supervised</span>
+<span class="badge nlp">NLP</span>
+<p><strong>Use Case:</strong> Sentiment analysis, search ranking, document classification.</p>
+<p><strong>How It Works:</strong> Learns language representations by reading text bidirectionally and understanding context around words.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>GPT / Large Language Model</h4>
+<span class="badge selfsupervised">Self-Supervised</span>
+<span class="badge nlp">NLP</span>
+<span class="badge genai">GenAI</span>
+<p><strong>Use Case:</strong> Text generation, summarization, code assistance, customer support automation.</p>
+<p><strong>How It Works:</strong> Predicts the next token in a sequence and uses transformer attention to generate context-aware language.</p>
+</div>
+
+<div class="algorithm-card">
+<h4>Diffusion Model</h4>
+<span class="badge selfsupervised">Generative</span>
+<span class="badge vision">Vision</span>
+<span class="badge genai">GenAI</span>
+<p><strong>Use Case:</strong> Image generation, design prototypes, visual content creation.</p>
+<p><strong>How It Works:</strong> Learns to remove noise step by step, gradually transforming random noise into a realistic image or other output.</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="relationship-strip">
+
+<div class="relationship-box">
+<h4>Prediction</h4>
+<p>Decision Trees, Random Forests, Gradient Boosting, and CNNs are often used when labeled outcomes are available and the goal is to predict a class or value.</p>
+</div>
+
+<div class="relationship-box">
+<h4>Pattern Discovery</h4>
+<p>K-Means and PCA help discover structure when labels are limited or unavailable, making them useful for segmentation and data exploration.</p>
+</div>
+
+<div class="relationship-box">
+<h4>Representation Learning</h4>
+<p>BERT, GPT, CNNs, and diffusion models learn internal representations from large-scale data, allowing them to handle images, language, and generated content.</p>
+</div>
+
+<div class="relationship-box">
+<h4>Content Generation</h4>
+<p>GANs, diffusion models, and GPT-style models move beyond prediction by creating new images, text, and other outputs.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- CLASSIFICATION PROCESS -->
+
+<h2 class="section-title">Classification Process</h2>
+
+<div class="highlight">
+
+<p>
+I classified the algorithms using two primary lenses. First, I sorted each algorithm by learning style: supervised, unsupervised, or self-supervised/generative. Supervised algorithms learn from labeled examples, while unsupervised algorithms identify structure without explicit labels. For modern generative AI systems, I used a self-supervised/generative label because models such as GPT and diffusion models often learn from large-scale data without traditional manually labeled target variables.
+</p>
+
+<p>
+Second, I grouped the algorithms by application domain. Tabular algorithms are commonly used for structured business data, such as customer records, transactions, or risk scores. Computer vision algorithms process images and visual patterns. NLP algorithms process language, meaning, and text relationships. Generative AI algorithms create new content, such as text or images. Some algorithms appear in more than one domain because modern AI systems often combine techniques across tasks.
+</p>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+
+<h2 class="section-title">Algorithm Classification Summary</h2>
+
+<div class="table-wrap">
+
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Type</th>
+<th>Domain</th>
+<th>Example Application</th>
+<th>Brief Explanation</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Decision Tree</td>
+<td>Supervised</td>
+<td>Tabular Data</td>
+<td>Loan approval or fraud rule classification</td>
+<td>Uses branching decision rules to split data into predicted outcomes.</td>
+</tr>
+
+<tr>
+<td>Random Forest</td>
+<td>Supervised</td>
+<td>Tabular Data</td>
+<td>Fraud detection or credit risk scoring</td>
+<td>Combines many decision trees to improve predictive accuracy and stability.</td>
+</tr>
+
+<tr>
+<td>Gradient Boosting</td>
+<td>Supervised</td>
+<td>Tabular Data</td>
+<td>Transaction risk scoring or churn prediction</td>
+<td>Builds models sequentially so each model corrects prior errors.</td>
+</tr>
+
+<tr>
+<td>K-Means Clustering</td>
+<td>Unsupervised</td>
+<td>Tabular Data</td>
+<td>Customer segmentation</td>
+<td>Groups observations based on similarity to cluster centers.</td>
+</tr>
+
+<tr>
+<td>Principal Component Analysis</td>
+<td>Unsupervised</td>
+<td>Tabular Data, Computer Vision</td>
+<td>Dimensionality reduction</td>
+<td>Compresses correlated variables into fewer components while preserving key variation.</td>
+</tr>
+
+<tr>
+<td>Convolutional Neural Network</td>
+<td>Supervised</td>
+<td>Computer Vision</td>
+<td>Image classification or object detection</td>
+<td>Detects visual features through convolutional filters and layered pattern recognition.</td>
+</tr>
+
+<tr>
+<td>Generative Adversarial Network</td>
+<td>Generative / Unsupervised</td>
+<td>Computer Vision, Generative AI</td>
+<td>Synthetic image generation</td>
+<td>Uses a generator and discriminator competing against each other to create realistic outputs.</td>
+</tr>
+
+<tr>
+<td>BERT</td>
+<td>Self-Supervised</td>
+<td>NLP</td>
+<td>Sentiment analysis or document classification</td>
+<td>Uses transformer attention to understand text context bidirectionally.</td>
+</tr>
+
+<tr>
+<td>GPT / Large Language Model</td>
+<td>Self-Supervised / Generative</td>
+<td>NLP, Generative AI</td>
+<td>Text generation, summarization, coding assistance</td>
+<td>Predicts the next token using transformer-based attention over language context.</td>
+</tr>
+
+<tr>
+<td>Diffusion Model</td>
+<td>Generative / Self-Supervised</td>
+<td>Computer Vision, Generative AI</td>
+<td>Image generation</td>
+<td>Learns to remove noise step by step to generate realistic images or content.</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+<!-- PROFESSIONAL RELEVANCE -->
+
+<h2 class="section-title">Professional Relevance</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Model Selection</h3>
+<p>
+This framework helps connect business problems to appropriate modeling approaches. For example, tabular risk scoring problems may benefit from tree-based models, while language-heavy tasks may require transformer-based models.
+</p>
+</div>
+
+<div class="card">
+<h3>Responsible AI</h3>
+<p>
+Choosing an algorithm is not only a technical decision. It also affects explainability, fairness, monitoring, and governance. Interpretable models may be preferred in high-stakes decision environments.
+</p>
+</div>
+
+<div class="card">
+<h3>Communication</h3>
+<p>
+The artifact is designed as a quick-reference guide for classmates, instructors, and future employers who want to understand how major AI/ML algorithms differ.
+</p>
+</div>
+
+</div>
+
+<!-- AI USE DISCLOSURE -->
+
+<h2 class="section-title">AI Assistance Disclosure</h2>
+
+<div class="highlight">
+
+<p>
+Generative AI assistance was used to help organize the framework, refine wording, and improve the clarity of explanations. The final classifications, examples, and structure were reviewed and revised for alignment with the AIML-501 assignment requirements and portfolio rubric.
+</p>
+
+</div>
+
+<!-- REFERENCES -->
+
+<h2 class="section-title">References</h2>
+
+<ul class="references">
+<li>Breiman, L. (2001). Random forests. <em>Machine Learning, 45</em>(1), 5–32.</li>
+<li>Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>.</li>
+<li>Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <em>Proceedings of NAACL-HLT</em>.</li>
+<li>Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A., & Bengio, Y. (2014). Generative adversarial nets. <em>Advances in Neural Information Processing Systems</em>.</li>
+<li>Ho, J., Jain, A., & Abbeel, P. (2020). Denoising diffusion probabilistic models. <em>Advances in Neural Information Processing Systems</em>.</li>
+<li>LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-based learning applied to document recognition. <em>Proceedings of the IEEE, 86</em>(11), 2278–2324.</li>
+<li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems</em>.</li>
+</ul>
+
+<p class="note">
+Note: This portfolio artifact is intended as a visual learning framework and professional reference for AIML-501 Model Development.
+</p>
+
+</div>
+
+</body>
+</html>
