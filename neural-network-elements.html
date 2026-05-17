@@ -9,8 +9,10 @@
 <style>
 
 :root{
---dark:#0f172a;
+--bg:#f4f6f8;
 --panel:#ffffff;
+--dark:#0f172a;
+--dark2:#111827;
 --blue:#2563eb;
 --sky:#38bdf8;
 --green:#22c55e;
@@ -19,7 +21,7 @@
 --red:#ef4444;
 --text:#1f2937;
 --muted:#64748b;
---bg:#f4f6f8;
+--line:#cbd5e1;
 }
 
 *{
@@ -40,18 +42,6 @@ margin:auto;
 padding:60px 20px;
 }
 
-h1{
-text-align:center;
-margin-bottom:10px;
-font-size:2.4rem;
-}
-
-.subtitle{
-text-align:center;
-color:var(--muted);
-margin-bottom:40px;
-}
-
 .back{
 display:inline-block;
 margin-bottom:30px;
@@ -60,54 +50,62 @@ color:var(--blue);
 font-weight:600;
 }
 
-.section-title{
+h1{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:var(--muted);
+margin-bottom:40px;
+}
+
+h2{
 margin-top:55px;
 margin-bottom:20px;
-font-size:1.7rem;
+font-size:1.75rem;
 color:#111827;
+}
+
+h3{
+margin-bottom:10px;
 }
 
 .highlight{
 background:#eef4ff;
 padding:24px;
 border-radius:12px;
-margin:30px 0;
 border-left:5px solid var(--blue);
+margin:28px 0;
 }
 
-.deck{
-display:grid;
-gap:28px;
-margin-top:30px;
-}
-
-.slide{
+.visual-panel{
 background:white;
 border-radius:18px;
-padding:34px;
+padding:28px;
 box-shadow:0 6px 18px rgba(0,0,0,0.10);
 border:1px solid #e5e7eb;
+margin:28px 0;
 }
 
-.slide-label{
-display:inline-block;
-background:#dbeafe;
-color:#1e40af;
-padding:5px 10px;
-border-radius:999px;
-font-size:0.8rem;
-font-weight:700;
-margin-bottom:14px;
+.dark-panel{
+background:var(--dark);
+color:#e5e7eb;
+border-radius:18px;
+padding:30px;
+margin:28px 0;
+box-shadow:0 8px 25px rgba(15,23,42,0.22);
 }
 
-.slide h2{
-font-size:1.8rem;
-margin-bottom:12px;
-color:#111827;
+.dark-panel h2,
+.dark-panel h3{
+color:white;
 }
 
-.slide p{
-color:#475569;
+.dark-panel p{
+color:#cbd5e1;
 }
 
 .grid{
@@ -126,7 +124,6 @@ border:1px solid #e2e8f0;
 
 .card h3{
 color:var(--blue);
-margin-bottom:8px;
 }
 
 .badge{
@@ -146,78 +143,114 @@ color:white;
 .red{background:var(--red);}
 .sky{background:#0284c7;}
 
-.network-wrap{
-background:#0f172a;
-border-radius:16px;
-padding:30px;
-margin-top:24px;
-color:white;
+.nn-svg-wrap{
 overflow-x:auto;
+margin-top:20px;
 }
 
-.network{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:26px;
-min-width:850px;
+svg{
+max-width:100%;
+height:auto;
 }
 
-.layer{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:14px;
-}
-
-.layer-title{
-font-weight:700;
-color:#bfdbfe;
-margin-bottom:6px;
-}
-
-.neuron{
-width:54px;
-height:54px;
-border-radius:50%;
-background:linear-gradient(135deg,#38bdf8,#8b5cf6);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:700;
-box-shadow:0 0 18px rgba(56,189,248,0.35);
-}
-
-.arrow{
-font-size:2.2rem;
-color:#94a3b8;
-}
-
-.connector-note{
+.caption{
+font-size:0.95rem;
+color:var(--muted);
+margin-top:12px;
 text-align:center;
+}
+
+.dark-caption{
+font-size:0.95rem;
 color:#cbd5e1;
-font-size:0.9rem;
-margin-top:18px;
+margin-top:12px;
+text-align:center;
 }
 
-.process{
+.pipeline{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
 gap:16px;
-margin-top:22px;
+margin-top:20px;
 }
 
-.step{
-background:#0f172a;
-color:white;
-padding:20px;
+.pipeline-step{
+background:#1f2937;
+border:1px solid rgba(255,255,255,0.08);
 border-radius:14px;
+padding:18px;
+color:#e5e7eb;
 position:relative;
 }
 
-.step h3{
+.pipeline-step h3{
 color:#93c5fd;
-margin-bottom:8px;
+font-size:1.05rem;
+}
+
+.pixel-grid{
+display:grid;
+grid-template-columns:repeat(8,18px);
+gap:3px;
+justify-content:center;
+margin:15px auto;
+}
+
+.pixel{
+width:18px;
+height:18px;
+border-radius:3px;
+background:#e5e7eb;
+}
+
+.p1{background:#111827;}
+.p2{background:#6b7280;}
+.p3{background:#9ca3af;}
+
+.example-grid{
+display:grid;
+grid-template-columns:1fr 1.2fr 1fr;
+gap:20px;
+align-items:center;
+margin-top:20px;
+}
+
+.example-box{
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:20px;
+text-align:center;
+min-height:190px;
+}
+
+.arrow-big{
+font-size:2rem;
+color:var(--blue);
+font-weight:800;
+text-align:center;
+}
+
+.prob-bar{
+display:flex;
+align-items:center;
+gap:10px;
+margin:8px 0;
+font-size:0.9rem;
+}
+
+.bar-bg{
+height:12px;
+background:#e5e7eb;
+border-radius:999px;
+flex:1;
+overflow:hidden;
+}
+
+.bar-fill{
+height:12px;
+background:var(--blue);
+border-radius:999px;
 }
 
 .table-wrap{
@@ -257,10 +290,13 @@ border-bottom:none;
 margin-bottom:10px;
 }
 
-.note{
-font-size:0.92rem;
-color:var(--muted);
-margin-top:14px;
+@media(max-width:850px){
+.example-grid{
+grid-template-columns:1fr;
+}
+.arrow-big{
+transform:rotate(90deg);
+}
 }
 
 </style>
@@ -272,370 +308,329 @@ margin-top:14px;
 
 <a class="back" href="index.html">← Back to Portfolio</a>
 
-<h1>Neural Network Elements Visual Presentation</h1>
+<h1>Neural Network Elements</h1>
 <p class="subtitle">Artifact 2 – AIML-501 Model Development</p>
 
-<!-- ARTIFACT OVERVIEW -->
-
-<h2 class="section-title">Artifact Overview</h2>
+<h2>Artifact Overview</h2>
 
 <div class="highlight">
 
-<p><strong>Title:</strong> Neural Network Elements Visual Presentation</p>
+<p><strong>Title:</strong> Neural Network Elements</p>
 
 <p><strong>Introduction:</strong>
-Neural networks are powerful machine learning models that have transformed artificial intelligence by enabling computers to recognize patterns, classify images, understand language, predict outcomes, and support generative AI systems.</p>
+Neural networks are powerful machine learning models that help computers recognize patterns, classify images, understand language, predict outcomes, and support generative AI systems.</p>
 
 <p><strong>Description:</strong>
-This artifact is a visual presentation that explains the structure and function of core neural network elements, including layers, neurons, weights, activation functions, loss functions, and optimization algorithms. It uses slide-style sections, a network architecture diagram, and a summary table to make the concepts easier to understand.</p>
+This artifact is a visual presentation of the major elements inside a neural network. It explains layers, neurons, weights, activation functions, loss functions, and optimization algorithms through diagrams, flow visuals, a worked example, and an architecture decision table.</p>
 
 <p><strong>Objective:</strong>
-To clearly define and visually explain how neural network elements work together to transform input data into predictions through forward propagation, loss measurement, and optimization.</p>
+To clearly define and visually explain how neural network elements work together to transform input data into predictions and improve through training.</p>
 
 <p><strong>Process:</strong>
-I reviewed neural network concepts from the workshop resources, practiced with Neural Network Playground, and organized the artifact as a visual presentation. I focused on showing the overall architecture of a neural network, explaining the role of each required component, and summarizing how training improves model performance.</p>
+I reviewed neural network concepts, practiced with Neural Network Playground, and organized the artifact around the actual neural network process: input data, weighted connections, hidden layers, activation functions, output prediction, loss calculation, and optimizer-based weight updates.</p>
 
 <p><strong>Tools and Technologies Used:</strong>
 HTML, CSS, GitHub Pages, Neural Network Playground, course materials, academic references, and generative AI assistance for organization and wording refinement.</p>
 
 <p><strong>Value Proposition:</strong>
-This artifact demonstrates my ability to simplify complex AI concepts into a professional visual resource that can support learning, communication, and model development discussions.</p>
+This artifact demonstrates my ability to simplify a technical AI concept into a professional visual resource that supports learning, communication, and applied model development.</p>
 
 <p><strong>Unique Value:</strong>
-The presentation connects neural network theory to practical model-building decisions, such as selecting layers, choosing activation functions, measuring loss, and using optimization algorithms to improve performance.</p>
+The artifact connects neural network structure to practical design choices such as depth, width, activation function, loss function, and use case fit.</p>
 
 <p><strong>Relevance:</strong>
-Understanding neural network elements is essential for working with deep learning, computer vision, natural language processing, generative AI, and applied predictive modeling.</p>
+Understanding neural network elements is essential for deep learning, computer vision, natural language processing, generative AI, and applied predictive modeling.</p>
 
 </div>
 
-<!-- VISUAL PRESENTATION -->
+<h2>Feedforward Neural Network Diagram</h2>
 
-<h2 class="section-title">Visual Presentation</h2>
-
-<div class="deck">
-
-<!-- SLIDE 1 -->
-
-<div class="slide">
-<span class="slide-label">Slide 1</span>
-<h2>What Is a Neural Network?</h2>
+<div class="dark-panel">
 
 <p>
-A neural network is a machine learning model made of connected layers of neurons. It receives input data, transforms that data through hidden layers, and produces an output such as a classification, prediction, or generated result.
+A feedforward neural network moves information in one direction: from input features, through hidden layers, to an output prediction. The model learns by adjusting the weights between neurons.
 </p>
 
-<div class="grid">
+<div class="nn-svg-wrap">
 
-<div class="card">
-<h3>Purpose</h3>
-<p>Learn patterns from data and use those patterns to make predictions or decisions.</p>
+<svg width="1050" height="470" viewBox="0 0 1050 470" xmlns="http://www.w3.org/2000/svg">
+
+<!-- layer titles -->
+<text x="90" y="40" fill="#bfdbfe" font-size="20" font-weight="700">Input Layer</text>
+<text x="340" y="40" fill="#bfdbfe" font-size="20" font-weight="700">Hidden Layer 1</text>
+<text x="610" y="40" fill="#bfdbfe" font-size="20" font-weight="700">Hidden Layer 2</text>
+<text x="875" y="40" fill="#bfdbfe" font-size="20" font-weight="700">Output Layer</text>
+
+<!-- connections input to hidden1 -->
+<g stroke="#64748b" stroke-width="1.6" opacity="0.75">
+<line x1="130" y1="100" x2="390" y2="80"/>
+<line x1="130" y1="100" x2="390" y2="150"/>
+<line x1="130" y1="100" x2="390" y2="220"/>
+<line x1="130" y1="100" x2="390" y2="290"/>
+
+<line x1="130" y1="180" x2="390" y2="80"/>
+<line x1="130" y1="180" x2="390" y2="150"/>
+<line x1="130" y1="180" x2="390" y2="220"/>
+<line x1="130" y1="180" x2="390" y2="290"/>
+
+<line x1="130" y1="260" x2="390" y2="80"/>
+<line x1="130" y1="260" x2="390" y2="150"/>
+<line x1="130" y1="260" x2="390" y2="220"/>
+<line x1="130" y1="260" x2="390" y2="290"/>
+
+<line x1="130" y1="340" x2="390" y2="80"/>
+<line x1="130" y1="340" x2="390" y2="150"/>
+<line x1="130" y1="340" x2="390" y2="220"/>
+<line x1="130" y1="340" x2="390" y2="290"/>
+</g>
+
+<!-- connections hidden1 to hidden2 -->
+<g stroke="#64748b" stroke-width="1.6" opacity="0.75">
+<line x1="390" y1="80" x2="650" y2="120"/>
+<line x1="390" y1="80" x2="650" y2="210"/>
+<line x1="390" y1="80" x2="650" y2="300"/>
+
+<line x1="390" y1="150" x2="650" y2="120"/>
+<line x1="390" y1="150" x2="650" y2="210"/>
+<line x1="390" y1="150" x2="650" y2="300"/>
+
+<line x1="390" y1="220" x2="650" y2="120"/>
+<line x1="390" y1="220" x2="650" y2="210"/>
+<line x1="390" y1="220" x2="650" y2="300"/>
+
+<line x1="390" y1="290" x2="650" y2="120"/>
+<line x1="390" y1="290" x2="650" y2="210"/>
+<line x1="390" y1="290" x2="650" y2="300"/>
+</g>
+
+<!-- connections hidden2 to output -->
+<g stroke="#64748b" stroke-width="1.8" opacity="0.75">
+<line x1="650" y1="120" x2="910" y2="180"/>
+<line x1="650" y1="120" x2="910" y2="260"/>
+<line x1="650" y1="210" x2="910" y2="180"/>
+<line x1="650" y1="210" x2="910" y2="260"/>
+<line x1="650" y1="300" x2="910" y2="180"/>
+<line x1="650" y1="300" x2="910" y2="260"/>
+</g>
+
+<!-- nodes input -->
+<g fill="url(#nodeGradient)" stroke="#93c5fd" stroke-width="2">
+<circle cx="130" cy="100" r="27"/>
+<circle cx="130" cy="180" r="27"/>
+<circle cx="130" cy="260" r="27"/>
+<circle cx="130" cy="340" r="27"/>
+</g>
+
+<!-- nodes hidden1 -->
+<g fill="url(#nodeGradient)" stroke="#93c5fd" stroke-width="2">
+<circle cx="390" cy="80" r="27"/>
+<circle cx="390" cy="150" r="27"/>
+<circle cx="390" cy="220" r="27"/>
+<circle cx="390" cy="290" r="27"/>
+</g>
+
+<!-- nodes hidden2 -->
+<g fill="url(#nodeGradient)" stroke="#93c5fd" stroke-width="2">
+<circle cx="650" cy="120" r="27"/>
+<circle cx="650" cy="210" r="27"/>
+<circle cx="650" cy="300" r="27"/>
+</g>
+
+<!-- nodes output -->
+<g fill="url(#outGradient)" stroke="#fed7aa" stroke-width="2">
+<circle cx="910" cy="180" r="30"/>
+<circle cx="910" cy="260" r="30"/>
+</g>
+
+<!-- node text -->
+<g fill="white" font-size="16" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+<text x="130" y="100">x1</text>
+<text x="130" y="180">x2</text>
+<text x="130" y="260">x3</text>
+<text x="130" y="340">x4</text>
+
+<text x="390" y="80">h1</text>
+<text x="390" y="150">h2</text>
+<text x="390" y="220">h3</text>
+<text x="390" y="290">h4</text>
+
+<text x="650" y="120">h1</text>
+<text x="650" y="210">h2</text>
+<text x="650" y="300">h3</text>
+
+<text x="910" y="180">ŷ0</text>
+<text x="910" y="260">ŷ1</text>
+</g>
+
+<!-- annotations -->
+<rect x="220" y="360" width="210" height="64" rx="12" fill="#172554" stroke="#38bdf8"/>
+<text x="325" y="385" fill="#bfdbfe" font-size="15" font-weight="700" text-anchor="middle">Weights</text>
+<text x="325" y="408" fill="#e5e7eb" font-size="13" text-anchor="middle">connection strength: w</text>
+
+<rect x="485" y="360" width="235" height="64" rx="12" fill="#172554" stroke="#8b5cf6"/>
+<text x="602" y="385" fill="#ddd6fe" font-size="15" font-weight="700" text-anchor="middle">Activation Function</text>
+<text x="602" y="408" fill="#e5e7eb" font-size="13" text-anchor="middle">adds nonlinearity: ReLU, sigmoid</text>
+
+<rect x="765" y="360" width="225" height="64" rx="12" fill="#172554" stroke="#f59e0b"/>
+<text x="878" y="385" fill="#fed7aa" font-size="15" font-weight="700" text-anchor="middle">Prediction</text>
+<text x="878" y="408" fill="#e5e7eb" font-size="13" text-anchor="middle">output class or value</text>
+
+<defs>
+<linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#38bdf8"/>
+<stop offset="100%" stop-color="#8b5cf6"/>
+</linearGradient>
+
+<linearGradient id="outGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#f59e0b"/>
+<stop offset="100%" stop-color="#ef4444"/>
+</linearGradient>
+</defs>
+
+</svg>
+
 </div>
 
-<div class="card">
-<h3>Common Uses</h3>
-<p>Image recognition, fraud detection, language modeling, recommendation systems, and generative AI.</p>
-</div>
-
-<div class="card">
-<h3>Key Idea</h3>
-<p>The model improves by comparing predictions to correct outcomes and adjusting internal parameters.</p>
-</div>
-
-</div>
-</div>
-
-<!-- SLIDE 2 -->
-
-<div class="slide">
-<span class="slide-label">Slide 2</span>
-<h2>Overall Neural Network Architecture</h2>
-
-<p>
-Data flows forward from the input layer through one or more hidden layers to the output layer. Each connection has a weight that controls how strongly information passes from one neuron to the next.
+<p class="dark-caption">
+Forward flow: input features → weighted neuron calculations → activation functions → hidden representations → output prediction.
 </p>
 
-<div class="network-wrap">
-
-<div class="network">
-
-<div class="layer">
-<div class="layer-title">Input Layer</div>
-<div class="neuron">x1</div>
-<div class="neuron">x2</div>
-<div class="neuron">x3</div>
 </div>
 
-<div class="arrow">→</div>
+<h2>Required Neural Network Elements</h2>
 
-<div class="layer">
-<div class="layer-title">Hidden Layer 1</div>
-<div class="neuron">h1</div>
-<div class="neuron">h2</div>
-<div class="neuron">h3</div>
-<div class="neuron">h4</div>
-</div>
-
-<div class="arrow">→</div>
-
-<div class="layer">
-<div class="layer-title">Hidden Layer 2</div>
-<div class="neuron">h1</div>
-<div class="neuron">h2</div>
-<div class="neuron">h3</div>
-</div>
-
-<div class="arrow">→</div>
-
-<div class="layer">
-<div class="layer-title">Output Layer</div>
-<div class="neuron">ŷ</div>
-</div>
-
-</div>
-
-<p class="connector-note">
-Input features → weighted connections → activation functions → hidden transformations → final prediction
-</p>
-
-</div>
-</div>
-
-<!-- SLIDE 3 -->
-
-<div class="slide">
-<span class="slide-label">Slide 3</span>
-<h2>Core Structural Elements</h2>
+<div class="visual-panel">
 
 <div class="grid">
 
 <div class="card">
 <span class="badge blue">Layers</span>
 <h3>Layers</h3>
-<p>
-Layers organize the network. The input layer receives data, hidden layers transform patterns, and the output layer produces the final result.
-</p>
+<p>Layers organize the flow of information. The input layer receives data, hidden layers learn patterns, and the output layer produces the final prediction.</p>
 </div>
 
 <div class="card">
 <span class="badge green">Neurons</span>
 <h3>Neurons</h3>
-<p>
-Neurons are processing units. Each neuron receives inputs, applies weights, adds bias, and passes the result through an activation function.
-</p>
+<p>Neurons are processing units. Each neuron combines inputs, weights, and bias, then passes the result through an activation function.</p>
 </div>
 
 <div class="card">
 <span class="badge purple">Weights</span>
 <h3>Weights</h3>
-<p>
-Weights determine the strength of connections between neurons. During training, the model adjusts weights to reduce prediction error.
-</p>
+<p>Weights control how strongly one neuron influences another. During training, the network adjusts weights to reduce error.</p>
 </div>
-
-</div>
-</div>
-
-<!-- SLIDE 4 -->
-
-<div class="slide">
-<span class="slide-label">Slide 4</span>
-<h2>Functions That Make the Network Learn</h2>
-
-<div class="grid">
 
 <div class="card">
-<span class="badge orange">Activation</span>
+<span class="badge orange">Activation Functions</span>
 <h3>Activation Functions</h3>
-<p>
-Activation functions introduce nonlinearity so the network can learn complex patterns. Common examples include ReLU, sigmoid, and tanh.
-</p>
+<p>Activation functions allow the network to learn nonlinear patterns. Examples include ReLU for hidden layers and sigmoid or softmax for outputs.</p>
 </div>
 
 <div class="card">
-<span class="badge red">Loss</span>
+<span class="badge red">Loss Functions</span>
 <h3>Loss Functions</h3>
-<p>
-A loss function measures how far the model prediction is from the correct answer. Lower loss means the model is performing better on the training objective.
-</p>
+<p>A loss function measures the difference between the model’s prediction and the correct answer. It defines what the model is trying to minimize.</p>
 </div>
 
 <div class="card">
-<span class="badge sky">Optimization</span>
+<span class="badge sky">Optimization Algorithms</span>
 <h3>Optimization Algorithms</h3>
-<p>
-Optimization algorithms update the model’s weights to reduce loss. Gradient descent and Adam are common methods used to improve model performance.
-</p>
+<p>Optimization algorithms update weights to reduce loss. Gradient descent and Adam are common approaches for improving model performance.</p>
 </div>
 
 </div>
+
 </div>
 
-<!-- SLIDE 5 -->
+<h2>How the Network Learns</h2>
 
-<div class="slide">
-<span class="slide-label">Slide 5</span>
-<h2>How Neural Network Training Works</h2>
+<div class="dark-panel">
 
 <p>
-Training is an iterative process. The model makes a prediction, measures the error, and updates its weights to improve future predictions.
+A neural network does not learn from one pass through the data. It improves through repeated cycles of prediction, loss measurement, backpropagation, and optimization.
 </p>
 
-<div class="process">
+<div class="pipeline">
 
-<div class="step">
-<h3>1. Input Data</h3>
-<p>Features enter the network through the input layer.</p>
+<div class="pipeline-step">
+<h3>1. Input</h3>
+<p>Features enter the network, such as pixels, transaction variables, or text embeddings.</p>
 </div>
 
-<div class="step">
+<div class="pipeline-step">
 <h3>2. Forward Pass</h3>
-<p>Data moves through weighted connections and activation functions.</p>
+<p>Inputs move through weighted connections and activation functions to produce a prediction.</p>
 </div>
 
-<div class="step">
-<h3>3. Compute Loss</h3>
-<p>The model compares its prediction with the correct result.</p>
+<div class="pipeline-step">
+<h3>3. Loss</h3>
+<p>The prediction is compared with the true label to calculate error.</p>
 </div>
 
-<div class="step">
-<h3>4. Optimize</h3>
-<p>The optimizer adjusts weights to reduce future error.</p>
+<div class="pipeline-step">
+<h3>4. Backpropagation</h3>
+<p>The model estimates how much each weight contributed to the error.</p>
 </div>
 
-<div class="step">
-<h3>5. Repeat</h3>
-<p>The cycle continues until performance stabilizes or improves sufficiently.</p>
-</div>
-
-</div>
-</div>
-
-<!-- SLIDE 6 -->
-
-<div class="slide">
-<span class="slide-label">Slide 6</span>
-<h2>Neural Network Playground Insights</h2>
-
-<p>
-Using Neural Network Playground helped demonstrate how network structure and data quality affect learning. More hidden layers and neurons can make a model more flexible, but they can also increase complexity and training time. Higher noise makes it harder for the model to separate classes cleanly. Feature selection also matters because better input features allow the network to learn simpler and more reliable decision boundaries.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>More Layers</h3>
-<p>
-Additional layers can capture more complex patterns, but they may require more training and careful tuning.
-</p>
-</div>
-
-<div class="card">
-<h3>More Noise</h3>
-<p>
-Noisy data makes the learning problem harder and can reduce model accuracy or create unstable boundaries.
-</p>
-</div>
-
-<div class="card">
-<h3>Better Features</h3>
-<p>
-Useful input features help the model learn clearer boundaries with less unnecessary complexity.
-</p>
-</div>
-
-</div>
-</div>
-
-<!-- SLIDE 7 -->
-
-<div class="slide">
-<span class="slide-label">Slide 7</span>
-<h2>Summary: Why Visualizing Neural Networks Matters</h2>
-
-<p>
-Visualizing neural networks makes abstract model behavior easier to understand. Instead of seeing a neural network as a black box, the diagram shows how data flows through layers, how neurons transform information, and how training improves predictions through loss measurement and optimization.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>Key Insight 1</h3>
-<p>
-Neural networks learn by adjusting weights, not by following fixed human-written rules.
-</p>
-</div>
-
-<div class="card">
-<h3>Key Insight 2</h3>
-<p>
-Architecture choices affect complexity, interpretability, training time, and performance.
-</p>
-</div>
-
-<div class="card">
-<h3>Key Insight 3</h3>
-<p>
-Understanding neural network elements helps practitioners design, evaluate, and communicate AI models more responsibly.
-</p>
-</div>
-
-</div>
+<div class="pipeline-step">
+<h3>5. Optimization</h3>
+<p>The optimizer updates weights to reduce future loss.</p>
 </div>
 
 </div>
 
-<!-- COMPONENT SUMMARY TABLE -->
+</div>
 
-<h2 class="section-title">Neural Network Elements Summary</h2>
+<h2>Architecture Choices and Use Cases</h2>
 
 <div class="table-wrap">
 
 <table>
 <thead>
 <tr>
-<th>Element</th>
-<th>Function</th>
-<th>Why It Matters</th>
+<th>Architecture Choice</th>
+<th>What It Controls</th>
+<th>When It Helps</th>
+<th>Example Use Case</th>
 </tr>
 </thead>
 
 <tbody>
 
 <tr>
-<td>Layers</td>
-<td>Organize information flow from input to output.</td>
-<td>Layer design affects model complexity and learning capacity.</td>
+<td>Depth</td>
+<td>Number of hidden layers.</td>
+<td>More depth helps the model learn layered, complex patterns but can increase training time and overfitting risk.</td>
+<td>Image classification where early layers learn edges and deeper layers learn shapes or objects.</td>
 </tr>
 
 <tr>
-<td>Neurons</td>
-<td>Process input values and pass transformed signals forward.</td>
-<td>Neurons are the basic computational units of the network.</td>
+<td>Width</td>
+<td>Number of neurons in each layer.</td>
+<td>More width gives the network more capacity to learn patterns, but too much width may memorize noise.</td>
+<td>Tabular prediction with many interacting variables, such as fraud risk or customer churn.</td>
 </tr>
 
 <tr>
-<td>Weights</td>
-<td>Control the strength of connections between neurons.</td>
-<td>Training mainly improves the model by adjusting weights.</td>
+<td>Activation Function</td>
+<td>How each neuron transforms its weighted input.</td>
+<td>ReLU is useful in hidden layers because it trains efficiently; sigmoid or softmax is useful for probabilities.</td>
+<td>Softmax output for multi-class digit classification.</td>
 </tr>
 
 <tr>
-<td>Activation Functions</td>
-<td>Add nonlinear transformations to neuron outputs.</td>
-<td>They allow neural networks to learn complex relationships.</td>
+<td>Loss Function</td>
+<td>The error measure the model tries to minimize.</td>
+<td>Different tasks need different losses: cross-entropy for classification and mean squared error for regression.</td>
+<td>Cross-entropy for classifying MNIST digits from 0 to 9.</td>
 </tr>
 
 <tr>
-<td>Loss Functions</td>
-<td>Measure the difference between predictions and correct outcomes.</td>
-<td>The loss function defines what the model is trying to improve.</td>
-</tr>
-
-<tr>
-<td>Optimization Algorithms</td>
-<td>Update weights to reduce loss over time.</td>
-<td>Optimization determines how efficiently the model learns.</td>
+<td>Optimizer</td>
+<td>How weights are updated during training.</td>
+<td>Adam often trains efficiently; gradient descent is easier to explain and useful for learning fundamentals.</td>
+<td>Training a simple feedforward model in Neural Network Playground.</td>
 </tr>
 
 </tbody>
@@ -643,50 +638,129 @@ Understanding neural network elements helps practitioners design, evaluate, and 
 
 </div>
 
-<!-- PROFESSIONAL RELEVANCE -->
+<h2>Worked Example: Classifying MNIST Digits</h2>
 
-<h2 class="section-title">Professional Relevance</h2>
+<div class="visual-panel">
+
+<p>
+In a digit classification task, the neural network receives an image of a handwritten digit and predicts which number it represents. A simple feedforward network can classify the image by converting pixel values into input features, passing them through hidden layers, and producing class probabilities for digits 0 through 9.
+</p>
+
+<div class="example-grid">
+
+<div class="example-box">
+<h3>Input Image</h3>
+
+<div class="pixel-grid">
+<div class="pixel"></div><div class="pixel p3"></div><div class="pixel p1"></div><div class="pixel p1"></div><div class="pixel p1"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel p1"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel p2"></div><div class="pixel p1"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel"></div><div class="pixel p3"></div><div class="pixel p1"></div><div class="pixel p1"></div><div class="pixel p3"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel p1"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel p1"></div><div class="pixel p2"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel p3"></div><div class="pixel p1"></div><div class="pixel p1"></div><div class="pixel p1"></div><div class="pixel p3"></div><div class="pixel"></div><div class="pixel"></div>
+<div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div>
+</div>
+
+<p>Pixel values become input features.</p>
+</div>
+
+<div class="example-box">
+<h3>Neural Network Processing</h3>
+<p><strong>Input layer:</strong> receives pixel values.</p>
+<p><strong>Hidden layers:</strong> learn strokes, curves, and digit-like patterns.</p>
+<p><strong>Activation functions:</strong> help the model learn nonlinear image patterns.</p>
+<p><strong>Weights:</strong> adjust as the model learns from correct and incorrect predictions.</p>
+</div>
+
+<div class="example-box">
+<h3>Output Probabilities</h3>
+
+<div class="prob-bar">
+<span>0</span><div class="bar-bg"><div class="bar-fill" style="width:4%;"></div></div><span>4%</span>
+</div>
+
+<div class="prob-bar">
+<span>1</span><div class="bar-bg"><div class="bar-fill" style="width:2%;"></div></div><span>2%</span>
+</div>
+
+<div class="prob-bar">
+<span>2</span><div class="bar-bg"><div class="bar-fill" style="width:6%;"></div></div><span>6%</span>
+</div>
+
+<div class="prob-bar">
+<span>3</span><div class="bar-bg"><div class="bar-fill" style="width:82%;"></div></div><span>82%</span>
+</div>
+
+<div class="prob-bar">
+<span>8</span><div class="bar-bg"><div class="bar-fill" style="width:6%;"></div></div><span>6%</span>
+</div>
+
+<p><strong>Prediction:</strong> Digit 3</p>
+</div>
+
+</div>
+
+<p class="caption">
+For MNIST-style classification, a common setup is input pixels → hidden layers with ReLU → output probabilities with softmax → cross-entropy loss → optimizer updates weights.
+</p>
+
+</div>
+
+<h2>Neural Network Playground Insights</h2>
+
+<div class="visual-panel">
+
+<p>
+Neural Network Playground showed how model structure and data quality affect training. Changing the number of layers, neurons, features, and noise level changed how quickly the model learned and how complex the decision boundary became.
+</p>
 
 <div class="grid">
 
 <div class="card">
-<h3>Model Understanding</h3>
-<p>
-This artifact helps explain how neural networks make predictions by showing the role of each element in the learning process.
-</p>
+<h3>Noise</h3>
+<p>Higher noise made the model harder to train because the classes were less clearly separated.</p>
 </div>
 
 <div class="card">
-<h3>Applied AI Communication</h3>
-<p>
-The visual format makes technical content easier to explain to classmates, instructors, business partners, and future employers.
-</p>
+<h3>Depth and Width</h3>
+<p>More layers and neurons increased flexibility, but also increased training complexity and overfitting risk.</p>
 </div>
 
 <div class="card">
-<h3>Responsible Model Development</h3>
-<p>
-Understanding architecture, loss, and optimization supports better model evaluation, monitoring, and responsible AI decision-making.
-</p>
+<h3>Feature Selection</h3>
+<p>Better input features helped the network learn cleaner decision boundaries with less unnecessary complexity.</p>
 </div>
 
 </div>
 
-<!-- AI USE DISCLOSURE -->
+</div>
 
-<h2 class="section-title">AI Assistance Disclosure</h2>
+<h2>Summary</h2>
 
 <div class="highlight">
 
 <p>
-Generative AI assistance was used to help organize the presentation structure, refine wording, and improve readability. The final content, examples, and organization were reviewed and revised for alignment with the AIML-501 assignment instructions, Neural Network Playground activity, and professional portfolio requirements.
+Visualizing neural networks makes the learning process easier to understand. A network is not just a set of boxes; it is a system where inputs move through weighted connections, neurons apply activation functions, predictions are compared against correct answers, and optimizers update weights to reduce loss.
+</p>
+
+<p>
+The key insight from this exercise is that neural network performance depends on both data quality and architecture choices. Depth, width, activation functions, loss functions, and optimization algorithms all influence how well the model learns. This artifact helped me connect neural network structure to practical modeling decisions used in computer vision, NLP, generative AI, and predictive analytics.
 </p>
 
 </div>
 
-<!-- REFERENCES -->
+<h2>AI Assistance Disclosure</h2>
 
-<h2 class="section-title">References</h2>
+<div class="highlight">
+
+<p>
+Generative AI assistance was used to help organize the visual framework, refine wording, and improve readability. The final content, examples, and structure were reviewed and revised for alignment with the AIML-501 assignment instructions, Neural Network Playground activity, and professional portfolio requirements.
+</p>
+
+</div>
+
+<h2>References</h2>
 
 <ul class="references">
 <li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
