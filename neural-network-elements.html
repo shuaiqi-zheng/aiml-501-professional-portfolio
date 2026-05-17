@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Artifact 2 – Neural Network Elements</title>
+
+<style>
+
+:root{
+--dark:#0f172a;
+--panel:#ffffff;
+--blue:#2563eb;
+--sky:#38bdf8;
+--green:#22c55e;
+--purple:#8b5cf6;
+--orange:#f59e0b;
+--red:#ef4444;
+--text:#1f2937;
+--muted:#64748b;
+--bg:#f4f6f8;
+}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+margin:0;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:60px 20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+font-size:2.4rem;
+}
+
+.subtitle{
+text-align:center;
+color:var(--muted);
+margin-bottom:40px;
+}
+
+.back{
+display:inline-block;
+margin-bottom:30px;
+text-decoration:none;
+color:var(--blue);
+font-weight:600;
+}
+
+.section-title{
+margin-top:55px;
+margin-bottom:20px;
+font-size:1.7rem;
+color:#111827;
+}
+
+.highlight{
+background:#eef4ff;
+padding:24px;
+border-radius:12px;
+margin:30px 0;
+border-left:5px solid var(--blue);
+}
+
+.deck{
+display:grid;
+gap:28px;
+margin-top:30px;
+}
+
+.slide{
+background:white;
+border-radius:18px;
+padding:34px;
+box-shadow:0 6px 18px rgba(0,0,0,0.10);
+border:1px solid #e5e7eb;
+}
+
+.slide-label{
+display:inline-block;
+background:#dbeafe;
+color:#1e40af;
+padding:5px 10px;
+border-radius:999px;
+font-size:0.8rem;
+font-weight:700;
+margin-bottom:14px;
+}
+
+.slide h2{
+font-size:1.8rem;
+margin-bottom:12px;
+color:#111827;
+}
+
+.slide p{
+color:#475569;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+margin-top:22px;
+}
+
+.card{
+background:#f8fafc;
+padding:20px;
+border-radius:12px;
+border:1px solid #e2e8f0;
+}
+
+.card h3{
+color:var(--blue);
+margin-bottom:8px;
+}
+
+.badge{
+display:inline-block;
+padding:5px 9px;
+border-radius:999px;
+font-size:0.78rem;
+font-weight:700;
+margin:3px 4px 8px 0;
+color:white;
+}
+
+.blue{background:var(--blue);}
+.green{background:var(--green);}
+.purple{background:var(--purple);}
+.orange{background:var(--orange);}
+.red{background:var(--red);}
+.sky{background:#0284c7;}
+
+.network-wrap{
+background:#0f172a;
+border-radius:16px;
+padding:30px;
+margin-top:24px;
+color:white;
+overflow-x:auto;
+}
+
+.network{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:26px;
+min-width:850px;
+}
+
+.layer{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px;
+}
+
+.layer-title{
+font-weight:700;
+color:#bfdbfe;
+margin-bottom:6px;
+}
+
+.neuron{
+width:54px;
+height:54px;
+border-radius:50%;
+background:linear-gradient(135deg,#38bdf8,#8b5cf6);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+box-shadow:0 0 18px rgba(56,189,248,0.35);
+}
+
+.arrow{
+font-size:2.2rem;
+color:#94a3b8;
+}
+
+.connector-note{
+text-align:center;
+color:#cbd5e1;
+font-size:0.9rem;
+margin-top:18px;
+}
+
+.process{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:16px;
+margin-top:22px;
+}
+
+.step{
+background:#0f172a;
+color:white;
+padding:20px;
+border-radius:14px;
+position:relative;
+}
+
+.step h3{
+color:#93c5fd;
+margin-bottom:8px;
+}
+
+.table-wrap{
+overflow-x:auto;
+margin-top:25px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+th{
+background:#1e3a8a;
+color:white;
+padding:12px;
+text-align:left;
+font-size:0.92rem;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #e5e7eb;
+vertical-align:top;
+font-size:0.92rem;
+}
+
+tr:last-child td{
+border-bottom:none;
+}
+
+.references li{
+margin-bottom:10px;
+}
+
+.note{
+font-size:0.92rem;
+color:var(--muted);
+margin-top:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+<h1>Neural Network Elements Visual Presentation</h1>
+<p class="subtitle">Artifact 2 – AIML-501 Model Development</p>
+
+<!-- ARTIFACT OVERVIEW -->
+
+<h2 class="section-title">Artifact Overview</h2>
+
+<div class="highlight">
+
+<p><strong>Title:</strong> Neural Network Elements Visual Presentation</p>
+
+<p><strong>Introduction:</strong>
+Neural networks are powerful machine learning models that have transformed artificial intelligence by enabling computers to recognize patterns, classify images, understand language, predict outcomes, and support generative AI systems.</p>
+
+<p><strong>Description:</strong>
+This artifact is a visual presentation that explains the structure and function of core neural network elements, including layers, neurons, weights, activation functions, loss functions, and optimization algorithms. It uses slide-style sections, a network architecture diagram, and a summary table to make the concepts easier to understand.</p>
+
+<p><strong>Objective:</strong>
+To clearly define and visually explain how neural network elements work together to transform input data into predictions through forward propagation, loss measurement, and optimization.</p>
+
+<p><strong>Process:</strong>
+I reviewed neural network concepts from the workshop resources, practiced with Neural Network Playground, and organized the artifact as a visual presentation. I focused on showing the overall architecture of a neural network, explaining the role of each required component, and summarizing how training improves model performance.</p>
+
+<p><strong>Tools and Technologies Used:</strong>
+HTML, CSS, GitHub Pages, Neural Network Playground, course materials, academic references, and generative AI assistance for organization and wording refinement.</p>
+
+<p><strong>Value Proposition:</strong>
+This artifact demonstrates my ability to simplify complex AI concepts into a professional visual resource that can support learning, communication, and model development discussions.</p>
+
+<p><strong>Unique Value:</strong>
+The presentation connects neural network theory to practical model-building decisions, such as selecting layers, choosing activation functions, measuring loss, and using optimization algorithms to improve performance.</p>
+
+<p><strong>Relevance:</strong>
+Understanding neural network elements is essential for working with deep learning, computer vision, natural language processing, generative AI, and applied predictive modeling.</p>
+
+</div>
+
+<!-- VISUAL PRESENTATION -->
+
+<h2 class="section-title">Visual Presentation</h2>
+
+<div class="deck">
+
+<!-- SLIDE 1 -->
+
+<div class="slide">
+<span class="slide-label">Slide 1</span>
+<h2>What Is a Neural Network?</h2>
+
+<p>
+A neural network is a machine learning model made of connected layers of neurons. It receives input data, transforms that data through hidden layers, and produces an output such as a classification, prediction, or generated result.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Purpose</h3>
+<p>Learn patterns from data and use those patterns to make predictions or decisions.</p>
+</div>
+
+<div class="card">
+<h3>Common Uses</h3>
+<p>Image recognition, fraud detection, language modeling, recommendation systems, and generative AI.</p>
+</div>
+
+<div class="card">
+<h3>Key Idea</h3>
+<p>The model improves by comparing predictions to correct outcomes and adjusting internal parameters.</p>
+</div>
+
+</div>
+</div>
+
+<!-- SLIDE 2 -->
+
+<div class="slide">
+<span class="slide-label">Slide 2</span>
+<h2>Overall Neural Network Architecture</h2>
+
+<p>
+Data flows forward from the input layer through one or more hidden layers to the output layer. Each connection has a weight that controls how strongly information passes from one neuron to the next.
+</p>
+
+<div class="network-wrap">
+
+<div class="network">
+
+<div class="layer">
+<div class="layer-title">Input Layer</div>
+<div class="neuron">x1</div>
+<div class="neuron">x2</div>
+<div class="neuron">x3</div>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="layer">
+<div class="layer-title">Hidden Layer 1</div>
+<div class="neuron">h1</div>
+<div class="neuron">h2</div>
+<div class="neuron">h3</div>
+<div class="neuron">h4</div>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="layer">
+<div class="layer-title">Hidden Layer 2</div>
+<div class="neuron">h1</div>
+<div class="neuron">h2</div>
+<div class="neuron">h3</div>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="layer">
+<div class="layer-title">Output Layer</div>
+<div class="neuron">ŷ</div>
+</div>
+
+</div>
+
+<p class="connector-note">
+Input features → weighted connections → activation functions → hidden transformations → final prediction
+</p>
+
+</div>
+</div>
+
+<!-- SLIDE 3 -->
+
+<div class="slide">
+<span class="slide-label">Slide 3</span>
+<h2>Core Structural Elements</h2>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge blue">Layers</span>
+<h3>Layers</h3>
+<p>
+Layers organize the network. The input layer receives data, hidden layers transform patterns, and the output layer produces the final result.
+</p>
+</div>
+
+<div class="card">
+<span class="badge green">Neurons</span>
+<h3>Neurons</h3>
+<p>
+Neurons are processing units. Each neuron receives inputs, applies weights, adds bias, and passes the result through an activation function.
+</p>
+</div>
+
+<div class="card">
+<span class="badge purple">Weights</span>
+<h3>Weights</h3>
+<p>
+Weights determine the strength of connections between neurons. During training, the model adjusts weights to reduce prediction error.
+</p>
+</div>
+
+</div>
+</div>
+
+<!-- SLIDE 4 -->
+
+<div class="slide">
+<span class="slide-label">Slide 4</span>
+<h2>Functions That Make the Network Learn</h2>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge orange">Activation</span>
+<h3>Activation Functions</h3>
+<p>
+Activation functions introduce nonlinearity so the network can learn complex patterns. Common examples include ReLU, sigmoid, and tanh.
+</p>
+</div>
+
+<div class="card">
+<span class="badge red">Loss</span>
+<h3>Loss Functions</h3>
+<p>
+A loss function measures how far the model prediction is from the correct answer. Lower loss means the model is performing better on the training objective.
+</p>
+</div>
+
+<div class="card">
+<span class="badge sky">Optimization</span>
+<h3>Optimization Algorithms</h3>
+<p>
+Optimization algorithms update the model’s weights to reduce loss. Gradient descent and Adam are common methods used to improve model performance.
+</p>
+</div>
+
+</div>
+</div>
+
+<!-- SLIDE 5 -->
+
+<div class="slide">
+<span class="slide-label">Slide 5</span>
+<h2>How Neural Network Training Works</h2>
+
+<p>
+Training is an iterative process. The model makes a prediction, measures the error, and updates its weights to improve future predictions.
+</p>
+
+<div class="process">
+
+<div class="step">
+<h3>1. Input Data</h3>
+<p>Features enter the network through the input layer.</p>
+</div>
+
+<div class="step">
+<h3>2. Forward Pass</h3>
+<p>Data moves through weighted connections and activation functions.</p>
+</div>
+
+<div class="step">
+<h3>3. Compute Loss</h3>
+<p>The model compares its prediction with the correct result.</p>
+</div>
+
+<div class="step">
+<h3>4. Optimize</h3>
+<p>The optimizer adjusts weights to reduce future error.</p>
+</div>
+
+<div class="step">
+<h3>5. Repeat</h3>
+<p>The cycle continues until performance stabilizes or improves sufficiently.</p>
+</div>
+
+</div>
+</div>
+
+<!-- SLIDE 6 -->
+
+<div class="slide">
+<span class="slide-label">Slide 6</span>
+<h2>Neural Network Playground Insights</h2>
+
+<p>
+Using Neural Network Playground helped demonstrate how network structure and data quality affect learning. More hidden layers and neurons can make a model more flexible, but they can also increase complexity and training time. Higher noise makes it harder for the model to separate classes cleanly. Feature selection also matters because better input features allow the network to learn simpler and more reliable decision boundaries.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>More Layers</h3>
+<p>
+Additional layers can capture more complex patterns, but they may require more training and careful tuning.
+</p>
+</div>
+
+<div class="card">
+<h3>More Noise</h3>
+<p>
+Noisy data makes the learning problem harder and can reduce model accuracy or create unstable boundaries.
+</p>
+</div>
+
+<div class="card">
+<h3>Better Features</h3>
+<p>
+Useful input features help the model learn clearer boundaries with less unnecessary complexity.
+</p>
+</div>
+
+</div>
+</div>
+
+<!-- SLIDE 7 -->
+
+<div class="slide">
+<span class="slide-label">Slide 7</span>
+<h2>Summary: Why Visualizing Neural Networks Matters</h2>
+
+<p>
+Visualizing neural networks makes abstract model behavior easier to understand. Instead of seeing a neural network as a black box, the diagram shows how data flows through layers, how neurons transform information, and how training improves predictions through loss measurement and optimization.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Key Insight 1</h3>
+<p>
+Neural networks learn by adjusting weights, not by following fixed human-written rules.
+</p>
+</div>
+
+<div class="card">
+<h3>Key Insight 2</h3>
+<p>
+Architecture choices affect complexity, interpretability, training time, and performance.
+</p>
+</div>
+
+<div class="card">
+<h3>Key Insight 3</h3>
+<p>
+Understanding neural network elements helps practitioners design, evaluate, and communicate AI models more responsibly.
+</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- COMPONENT SUMMARY TABLE -->
+
+<h2 class="section-title">Neural Network Elements Summary</h2>
+
+<div class="table-wrap">
+
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Function</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Layers</td>
+<td>Organize information flow from input to output.</td>
+<td>Layer design affects model complexity and learning capacity.</td>
+</tr>
+
+<tr>
+<td>Neurons</td>
+<td>Process input values and pass transformed signals forward.</td>
+<td>Neurons are the basic computational units of the network.</td>
+</tr>
+
+<tr>
+<td>Weights</td>
+<td>Control the strength of connections between neurons.</td>
+<td>Training mainly improves the model by adjusting weights.</td>
+</tr>
+
+<tr>
+<td>Activation Functions</td>
+<td>Add nonlinear transformations to neuron outputs.</td>
+<td>They allow neural networks to learn complex relationships.</td>
+</tr>
+
+<tr>
+<td>Loss Functions</td>
+<td>Measure the difference between predictions and correct outcomes.</td>
+<td>The loss function defines what the model is trying to improve.</td>
+</tr>
+
+<tr>
+<td>Optimization Algorithms</td>
+<td>Update weights to reduce loss over time.</td>
+<td>Optimization determines how efficiently the model learns.</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+<!-- PROFESSIONAL RELEVANCE -->
+
+<h2 class="section-title">Professional Relevance</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Model Understanding</h3>
+<p>
+This artifact helps explain how neural networks make predictions by showing the role of each element in the learning process.
+</p>
+</div>
+
+<div class="card">
+<h3>Applied AI Communication</h3>
+<p>
+The visual format makes technical content easier to explain to classmates, instructors, business partners, and future employers.
+</p>
+</div>
+
+<div class="card">
+<h3>Responsible Model Development</h3>
+<p>
+Understanding architecture, loss, and optimization supports better model evaluation, monitoring, and responsible AI decision-making.
+</p>
+</div>
+
+</div>
+
+<!-- AI USE DISCLOSURE -->
+
+<h2 class="section-title">AI Assistance Disclosure</h2>
+
+<div class="highlight">
+
+<p>
+Generative AI assistance was used to help organize the presentation structure, refine wording, and improve readability. The final content, examples, and organization were reviewed and revised for alignment with the AIML-501 assignment instructions, Neural Network Playground activity, and professional portfolio requirements.
+</p>
+
+</div>
+
+<!-- REFERENCES -->
+
+<h2 class="section-title">References</h2>
+
+<ul class="references">
+<li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+<li>LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. <em>Nature, 521</em>, 436–444.</li>
+<li>Nielsen, M. A. (2015). <em>Neural Networks and Deep Learning</em>. Determination Press.</li>
+<li>TensorFlow. (n.d.). <em>Neural Network Playground</em>.</li>
+</ul>
+
+</div>
+
+</body>
+</html>
