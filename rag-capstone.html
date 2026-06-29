@@ -48,6 +48,9 @@ ul{padding-left:22px}
 <h1>Artifact 6 — RAG Capstone: IWU Faculty Handbook Guide Custom GPT</h1>
 <p class="subtitle">A source-only retrieval-augmented generation assistant designed to answer faculty handbook questions with citations, scope limits, and escalation when evidence is missing.</p>
 
+<h2>Title</h2>
+<p><strong>RAG Capstone: IWU Faculty Handbook Guide Custom GPT.</strong> This capstone artifact presents a source-grounded Custom GPT for faculty handbook policy lookup.</p>
+
 <!-- 2. INTRODUCTION -->
 <div class="hero-panel">
 <h2>Introduction</h2>
@@ -73,6 +76,14 @@ ul{padding-left:22px}
 </div>
 
 <!-- 5. PROCESS -->
+<h2>Capstone Visual Snapshot</h2>
+<div class="grid">
+  <div class="card"><span class="badge">Lookup Speed</span><p class="metric">70%</p><p>target faster lookup compared with manual handbook search.</p></div>
+  <div class="card"><span class="badge">Citation Quality</span><p class="metric">≥85%</p><p>target correct handbook section cited in the pilot benchmark.</p></div>
+  <div class="card"><span class="badge">Demo Validation</span><p class="metric">10/10</p><p>initial policy-table checks passed in source-only mode.</p></div>
+  <div class="card"><span class="badge">Guardrail</span><p class="metric">Escalate</p><p>unclear, risky, or weak-evidence questions route to an official office.</p></div>
+</div>
+
 <h2>Process</h2>
 <p>The capstone moved from a general Q&amp;A prototype to a source-only RAG workflow. The key design change was requiring retrieval and citation before final answer generation.</p>
 

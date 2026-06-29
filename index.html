@@ -63,11 +63,10 @@ margin-bottom:35px;
 }
 
 .buttons{
-max-width:950px;
+max-width:900px;
 margin:0 auto;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
+display:grid;
+grid-template-columns:repeat(3,minmax(180px,1fr));
 gap:14px;
 }
 
@@ -77,7 +76,27 @@ margin:0;
 padding:14px 26px;
 border-radius:8px;
 font-weight:600;
+display:block;
+text-align:center;
+}
+
+.explore-button-row{
+margin-top:16px;
+text-align:center;
+}
+
+.explore-button-row a{
+text-decoration:none;
+padding:14px 26px;
+border-radius:8px;
+font-weight:600;
 display:inline-block;
+}
+
+@media(max-width:700px){
+.buttons{
+grid-template-columns:1fr;
+}
 }
 
 .primary-btn{
@@ -192,6 +211,9 @@ This portfolio highlights selected artifacts that demonstrate technical communic
 <a class="primary-btn" href="xai-explainability.html">View Artifact 4</a>
 <a class="primary-btn" href="teachable-machine-transfer-learning.html">View Artifact 5</a>
 <a class="primary-btn" href="rag-capstone.html">View Artifact 6</a>
+</div>
+
+<div class="explore-button-row">
 <a class="secondary-btn" href="#portfolio">Explore Portfolio</a>
 </div>
 
