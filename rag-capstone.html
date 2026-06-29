@@ -6,27 +6,45 @@
 <title>Artifact 6 – RAG Capstone Policy Assistant</title>
 <style>
 :root{
---bg:#f4f6f8;--panel:#ffffff;--dark:#0f172a;--blue:#2563eb;--green:#16a34a;--teal:#0ea5e9;--amber:#f59e0b;--red:#dc2626;--text:#1f2937;--muted:#64748b;
+--bg:#f4f6f8;--panel:#ffffff;--dark:#0f172a;--blue:#2563eb;--green:#16a34a;--teal:#0ea5e9;--amber:#f59e0b;--red:#dc2626;--text:#1f2937;--muted:#64748b;--line:#e2e8f0;
 }
 *{box-sizing:border-box}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.6}
 .container{max-width:1150px;margin:auto;padding:60px 20px}
 .back{display:inline-block;margin-bottom:30px;text-decoration:none;color:var(--blue);font-weight:700}
 h1{text-align:center;font-size:2.45rem;margin:0 0 10px;color:var(--dark)}
-.subtitle{text-align:center;color:var(--muted);max-width:860px;margin:0 auto 32px}
+.subtitle{text-align:center;color:var(--muted);max-width:860px;margin:0 auto 28px}
 h2{margin-top:42px;margin-bottom:14px;color:var(--dark);font-size:1.55rem}
 h3{margin-top:0;color:var(--blue)}
 a{color:var(--blue)}
 .hero-panel{background:linear-gradient(120deg,#2563eb,#22c55e);color:white;border-radius:18px;padding:34px;box-shadow:0 6px 18px rgba(0,0,0,.12);margin:28px 0}
 .hero-panel h2{color:white;margin-top:0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.hero-btn{display:inline-block;background:#0f172a;color:white;text-decoration:none;font-weight:800;padding:11px 17px;border-radius:10px;border:1px solid rgba(255,255,255,.18)}
+.hero-btn.secondary{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px;margin-top:18px}
-.card{background:var(--panel);padding:20px;border-radius:13px;border:1px solid #e2e8f0;box-shadow:0 3px 10px rgba(0,0,0,.06)}
-.metric{font-size:1.65rem;font-weight:850;color:var(--dark);margin:.2rem 0}
+.card{background:var(--panel);padding:20px;border-radius:13px;border:1px solid var(--line);box-shadow:0 3px 10px rgba(0,0,0,.06)}
+.metric{font-size:1.7rem;font-weight:850;color:var(--dark);margin:.2rem 0}
 .badge{display:inline-block;background:#eff6ff;color:#1d4ed8;padding:4px 10px;border-radius:999px;font-size:.84rem;font-weight:800;margin-bottom:10px}
 .ok{color:var(--green);font-weight:800}.warn{color:var(--amber);font-weight:800}.risk{color:var(--red);font-weight:800}
+.visual-board{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.06);margin-top:18px}
+.visual-title{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.visual-title strong{color:var(--dark);font-size:1.1rem}.visual-title span{color:var(--muted);font-size:.92rem}
+.problem-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.problem{border:1px solid #dbeafe;background:#f8fafc;border-radius:14px;padding:16px;text-align:center}
+.problem .icon{font-size:1.75rem;display:block;margin-bottom:5px}
 .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
-.step{background:white;border:1px solid #dbeafe;border-radius:14px;padding:16px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.step{background:white;border:1px solid #dbeafe;border-radius:14px;padding:16px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.05);position:relative}
 .step strong{display:block;color:var(--blue);font-size:1rem;margin-bottom:6px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:38%;color:#94a3b8;font-weight:900}
+.architecture{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+.arch-card{padding:18px;border-radius:15px;background:#f8fafc;border:1px solid var(--line)}
+.arch-card h3{margin-bottom:8px}.arch-card .big{font-size:1.8rem;font-weight:900;color:var(--dark)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.chip{background:#eef2ff;color:#3730a3;font-weight:750;padding:7px 10px;border-radius:999px;font-size:.88rem}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.timeline .node{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.timeline .num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#dbeafe;color:#1d4ed8;font-weight:900;margin-bottom:8px}
 .table-wrap{overflow-x:auto;background:white;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
 table{width:100%;border-collapse:collapse;min-width:830px}
 th,td{padding:13px 14px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}
@@ -36,8 +54,8 @@ tr:last-child td{border-bottom:none}
 .warning{background:#fffbeb;padding:22px;border-radius:12px;border-left:5px solid var(--amber);margin:25px 0}
 .references{font-size:.95rem;color:var(--muted)}
 ul{padding-left:22px}
-@media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}h1{font-size:2rem}.container{padding:35px 16px}table{min-width:760px}}
-@media(max-width:520px){.flow{grid-template-columns:1fr}}
+@media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}.step:not(:last-child)::after{display:none}.problem-row,.architecture,.timeline{grid-template-columns:1fr}h1{font-size:2rem}.container{padding:35px 16px}table{min-width:760px}.visual-title{display:block}}
+@media(max-width:520px){.flow{grid-template-columns:1fr}.hero-actions{display:block}.hero-btn{margin:6px 0}}
 </style>
 </head>
 <body>
@@ -50,16 +68,36 @@ ul{padding-left:22px}
 
 <h2>Title</h2>
 <p><strong>RAG Capstone: IWU Faculty Handbook Guide Custom GPT.</strong> This capstone artifact presents a source-grounded Custom GPT for faculty handbook policy lookup.</p>
+<div class="hero-actions" style="justify-content:center;margin-top:10px;margin-bottom:20px;">
+<a class="hero-btn" href="https://chatgpt.com/g/g-6a2da77a72908191a62682da2c387862-iwu-faculty-handbook-guide" target="_blank" rel="noopener">Open Custom GPT</a>
+<a class="hero-btn secondary" style="background:#ffffff;color:#2563eb;border:1px solid #bfdbfe;" href="#process">View RAG Workflow</a>
+</div>
 
 <!-- 2. INTRODUCTION -->
 <div class="hero-panel">
 <h2>Introduction</h2>
 <p>This capstone artifact applies retrieval-augmented generation (RAG) to an academic policy-support problem. The goal was not to build a general chatbot, but to design a responsible assistant that retrieves handbook evidence before answering and avoids unsupported policy conclusions.</p>
+<div class="hero-actions">
+<a class="hero-btn" href="https://chatgpt.com/g/g-6a2da77a72908191a62682da2c387862-iwu-faculty-handbook-guide" target="_blank" rel="noopener">Try the IWU Faculty Handbook Guide</a>
+<a class="hero-btn secondary" href="#validation">See Validation & Guardrails</a>
+</div>
 </div>
 
 <!-- 3. DESCRIPTION -->
 <h2>Description</h2>
 <p>The project is an IWU Faculty Handbook Guide Custom GPT. It supports routine questions from faculty, department chairs, and academic affairs users about topics such as grading, AI use, attendance, student data, appeals, and academic procedure. The assistant follows a grounded answer pattern: direct answer, cited handbook section, limitation or scope note, and escalation when the source does not support a confident answer.</p>
+
+<div class="visual-board">
+  <div class="visual-title">
+    <strong>Business Problem → RAG Response</strong>
+    <span>Designed for policy questions where speed alone is not enough</span>
+  </div>
+  <div class="problem-row">
+    <div class="problem"><span class="icon">🔎</span><strong>Fragmented lookup</strong><p>Handbook answers can be spread across grading, AI use, appeals, FERPA, and academic-procedure sections.</p></div>
+    <div class="problem"><span class="icon">⚖️</span><strong>Interpretation risk</strong><p>Different readers may summarize the same policy differently without a shared source trail.</p></div>
+    <div class="problem"><span class="icon">📌</span><strong>Traceable answer</strong><p>The assistant retrieves the section first, then gives a concise answer with citation and scope limits.</p></div>
+  </div>
+</div>
 
 <div class="warning">
 <strong>Important scope limit:</strong> The system uses a teaching-version handbook extract for the AIML-501 capstone. It is designed for classroom demonstration and pilot evaluation, not as a replacement for official IWU policy interpretation.
@@ -75,7 +113,52 @@ ul{padding-left:22px}
 <div class="card"><h3>Expected Output</h3><p>Direct answer → cited handbook section → limitation note → escalation if evidence is weak or missing.</p></div>
 </div>
 
+<div class="visual-board">
+  <div class="visual-title">
+    <strong>Source Corpus Coverage</strong>
+    <span>Section-based retrieval supports citation traceability</span>
+  </div>
+  <div class="chips">
+    <span class="chip">Faculty commitments</span>
+    <span class="chip">Academic integrity</span>
+    <span class="chip">Grade scale</span>
+    <span class="chip">Attendance</span>
+    <span class="chip">Late work</span>
+    <span class="chip">Accommodations</span>
+    <span class="chip">Workload</span>
+    <span class="chip">Technology/data handling</span>
+    <span class="chip">Residency</span>
+    <span class="chip">Grievance/appeal</span>
+    <span class="chip">Responsible AI</span>
+    <span class="chip">Assessment standards</span>
+  </div>
+</div>
+
 <!-- 5. PROCESS -->
+<h2 id="process">Process</h2>
+<p>The capstone moved from a general Q&amp;A prototype to a source-only RAG workflow. The key design change was requiring retrieval and citation before final answer generation.</p>
+
+<div class="visual-board">
+  <div class="visual-title">
+    <strong>RAG Architecture</strong>
+    <span>Evidence first, answer second</span>
+  </div>
+  <div class="flow">
+    <div class="step"><strong>1. Ask</strong>Plain-English policy question</div>
+    <div class="step"><strong>2. Retrieve</strong>Search handbook chunks and section metadata</div>
+    <div class="step"><strong>3. Ground</strong>Attach source excerpts and version</div>
+    <div class="step"><strong>4. Generate</strong>Draft concise answer from evidence</div>
+    <div class="step"><strong>5. Cite</strong>Show section and confidence</div>
+    <div class="step"><strong>6. Escalate</strong>Route unclear or risky cases</div>
+  </div>
+</div>
+
+<div class="architecture">
+  <div class="arch-card"><h3>Current MVP</h3><p class="big">Custom GPT</p><p>Private shared GPT using uploaded Knowledge for classroom demo and pilot testing.</p></div>
+  <div class="arch-card"><h3>Production Path</h3><p class="big">Portal / LMS</p><p>Potential placement in myIWU, faculty portal, LMS admin area, Teams, or intranet.</p></div>
+  <div class="arch-card"><h3>Control Layer</h3><p class="big">Governance</p><p>Version control, role-based access, usage logging, and escalation review for weak evidence.</p></div>
+</div>
+
 <h2>Capstone Visual Snapshot</h2>
 <div class="grid">
   <div class="card"><span class="badge">Lookup Speed</span><p class="metric">70%</p><p>target faster lookup compared with manual handbook search.</p></div>
@@ -84,24 +167,11 @@ ul{padding-left:22px}
   <div class="card"><span class="badge">Guardrail</span><p class="metric">Escalate</p><p>unclear, risky, or weak-evidence questions route to an official office.</p></div>
 </div>
 
-<h2>Process</h2>
-<p>The capstone moved from a general Q&amp;A prototype to a source-only RAG workflow. The key design change was requiring retrieval and citation before final answer generation.</p>
-
-<div class="flow">
-<div class="step"><strong>1. Ask</strong>Plain-English policy question</div>
-<div class="step"><strong>2. Retrieve</strong>Search handbook chunks and section metadata</div>
-<div class="step"><strong>3. Ground</strong>Attach source excerpts and version</div>
-<div class="step"><strong>4. Generate</strong>Draft concise answer from evidence</div>
-<div class="step"><strong>5. Cite</strong>Show section and confidence</div>
-<div class="step"><strong>6. Escalate</strong>Route unclear or risky cases</div>
-</div>
-
-<h2>Validation and Guardrails</h2>
-<div class="grid">
-<div class="card"><span class="badge">Validation Set</span><p>10–20 handbook questions mapped to expected answers and source sections.</p></div>
-<div class="card"><span class="badge">Demo Checks</span><p><span class="ok">10/10</span> initial policy-table checks passed during the capstone demo.</p></div>
-<div class="card"><span class="badge">Source-Only Rule</span><p>No retrieved handbook source means no policy conclusion.</p></div>
-<div class="card"><span class="badge">Escalation</span><p>High-risk or unclear questions route to HR, Provost, Program Chair, or DSB Dean.</p></div>
+<h2 id="validation">Validation and Guardrails</h2>
+<div class="timeline">
+  <div class="node"><span class="num">1</span><h3>Manual benchmark</h3><p>Compare manual search and chatbot answers on the same 20 common handbook questions.</p></div>
+  <div class="node"><span class="num">2</span><h3>Citation scoring</h3><p>Review whether the cited section actually supports the answer and whether the answer should have escalated.</p></div>
+  <div class="node"><span class="num">3</span><h3>User feedback</h3><p>Track faculty satisfaction and repeated-email reduction after pilot use.</p></div>
 </div>
 
 <div class="table-wrap" style="margin-top:22px;">
@@ -116,10 +186,17 @@ ul{padding-left:22px}
 </table>
 </div>
 
+<div class="grid">
+<div class="card"><span class="badge">Source-Only Rule</span><p>No retrieved handbook source means no policy conclusion.</p></div>
+<div class="card"><span class="badge">Scope Disclosure</span><p>State that answers rely on the R.5 teaching extract, not the full official handbook.</p></div>
+<div class="card"><span class="badge">Escalation Path</span><p>High-risk or unclear questions route to HR, Provost, Program Chair, or DSB Dean.</p></div>
+<div class="card"><span class="badge">Prompt-Injection Refusal</span><p>Ignore requests to bypass citations, override policy text, or answer outside the source.</p></div>
+</div>
+
 <!-- 6. TOOLS & TECHNOLOGIES -->
 <h2>Tools &amp; Technologies</h2>
 <div class="grid">
-<div class="card"><h3>Custom GPT</h3><p>Used uploaded Knowledge to create a focused handbook assistant rather than a general chatbot.</p></div>
+<div class="card"><h3>Custom GPT</h3><p>Used uploaded Knowledge to create a focused handbook assistant rather than a general chatbot. <a href="https://chatgpt.com/g/g-6a2da77a72908191a62682da2c387862-iwu-faculty-handbook-guide" target="_blank" rel="noopener">Open the Custom GPT</a>.</p></div>
 <div class="card"><h3>Retrieval-Augmented Generation</h3><p>Retrieved source sections first, then generated an answer from those sections.</p></div>
 <div class="card"><h3>Section-Level Chunking</h3><p>Chunked the handbook extract by policy section and used section titles as metadata for citation traceability.</p></div>
 <div class="card"><h3>Validation Table</h3><p>Mapped test questions to expected answers and source sections to evaluate answer quality.</p></div>
